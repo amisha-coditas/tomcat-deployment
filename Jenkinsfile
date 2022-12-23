@@ -5,14 +5,14 @@ pipeline {
             steps {
                 echo "Building"
                 sh 'chmod 400 jenkins-key.pem'
-                sh 'scp -T -o StrictHostKeyChecking=no -i jenkins-key.pem sample.war ec2-user@54.227.113.231:~'
+                sh 'scp -T -o StrictHostKeyChecking=no -i jenkins-key.pem sample.war ec2-user@3.236.39.225:~'
             }
         }
         stage('Deploy') {
             steps{
                 sh '''
                 chmod 400 jenkins-key.pem
-                ssh -T -o StrictHostKeyChecking=no -i jenkins-key.pem ec2-user@54.227.113.231 "sudo su; sudo mv sample.war /opt/tomcat/webapps"
+                ssh -T -o StrictHostKeyChecking=no -i jenkins-key.pem ec2-user@3.236.39.225 "sudo su; sudo mv sample.war /opt/tomcat/webapps"
             '''
             }
         }
