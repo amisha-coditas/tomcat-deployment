@@ -12,7 +12,7 @@ pipeline {
             steps{
                 sh '''
                 chmod 400 jenkins-key.pem
-                ssh -T -o StrictHostKeyChecking=no -i jenkins-key.pem ubuntu@54.227.113.231 "sudo su; sudo mv sample.war /opt/tomcat/webapps"
+                ssh -T -o StrictHostKeyChecking=no -i jenkins-key.pem ec2-user@54.227.113.231 "sudo su; sudo mv sample.war /opt/tomcat/webapps"
             '''
             }
         }
